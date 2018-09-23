@@ -1,0 +1,107 @@
+﻿<Window x:Class="BoyScoutWreathTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoyScoutWreathTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="1500">
+    <Grid>
+        <StackPanel Margin="0,0,0,-273">
+            <Label Content="Troop 67 Wreath Transaction Window" FontSize="20"/>
+            <WrapPanel Margin="0,10,10,10">
+                <WrapPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Label.Margin" Value="10,0,10,0" />
+                    </Style>
+                </WrapPanel.Resources>
+                <Label Content="Please Select Scout:"/>
+                <ComboBox x:Name="scoutCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="scoutCombo_SelectionChanged" />
+                <Label Content="Entered Date:"/>
+                <DatePicker Name="enterDate"/>
+                <CheckBox Name="dateFilterCheckBox" Margin="5" Content="Filter on Entered Date" Click="dateFilterCheckBox_Click"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Border BorderThickness="2" BorderBrush="Aqua" >
+                    <StackPanel Margin="10,10,10,10">
+                        <Label Content="Add Wreaths To Scout's Account" FontSize="16" HorizontalAlignment="Center" />
+                        <WrapPanel>
+                            <WrapPanel.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Margin" Value="5,0,0,0" />
+                                </Style>
+                            </WrapPanel.Resources>
+                            <Label Content="Wreath:"/>
+                            <ComboBox x:Name="wreathCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="wreathCombo_SelectionChanged" />
+                            <Label Content="Price:"/>
+                            <Label Name="priceLabel" Content="" Width="50"/>
+                            <Label Content="Quantity:"/>
+                            <TextBox Name="wreathQuanityTextBox" Width="50"/>
+                            <Label Content="Notes:"/>
+                            <TextBox Name="notesTextBox" Width="200"/>
+                            <Button Name="addInventoryButton" Content="Add" Width="50" Margin="10,0,0,0" Click="addInventoryButton_Click"/>  
+                        </WrapPanel>
+                        <WrapPanel>
+                            <DataGrid Name="inventoryDataGrid" Height="200" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn SortMemberPath="Entered_Date" SortDirection="Ascending" Width="100" Header="Entered Date" Binding="{Binding Entered_Date, StringFormat=\{0:MM/dd/yyyy\}}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="150" Header="Scout_Name" Binding ="{Binding Scout_Name}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="150" Header="Wreath Name" Binding="{Binding Wreath_Name}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="50" Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="50" Header="Qty" Binding="{Binding Quantity}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="70" Header="Total Price" Binding="{Binding Total_Price}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="250" Header="Notes" Binding="{Binding Notes}" IsReadOnly="True"/>
+                                    <DataGridCheckBoxColumn Width="70" Header="Delete Row" Binding="{Binding Delete_Row}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </WrapPanel>
+                        <DockPanel>
+                            <Label Content="Total Sales:"/>
+                            <Label Name="totalSalesLabel"/>
+                            <Button Name="deleteInventoryButton" Content="Delete Selected Rows" HorizontalAlignment="Right" Click="deleteInventoryButton_Click"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+                <Border BorderThickness="2" BorderBrush="Aqua" >
+                    <StackPanel Margin="10,10,10,10">
+                        <Label Content="Add Payment To Scout's Account" FontSize="16" HorizontalAlignment="Center" />
+                        <WrapPanel>
+                            <WrapPanel.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Margin" Value="10,0,0,0" />
+                                </Style>
+                            </WrapPanel.Resources>
+                            <Label Content="Cash Payment:"/>
+                            <TextBox Name="cashPaymentBox" Width="50"/>
+                            <Label Content="Check Payment:"/>
+                            <TextBox Name="checkPaymentBox" Width="50"/>
+                            <Button Name="addPaymentsButton" Content="Add" Width="50" Margin="10,0,0,0" Click="addPaymentsButton_Click"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <DataGrid Name="paymentsDataGrid" Height="200" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn SortMemberPath="Entered_Date" SortDirection="Ascending" Width="100" Header="Entered Date" Binding="{Binding Entered_Date, StringFormat=\{0:MM/dd/yyyy\}}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="150" Header="Scout_Name" Binding ="{Binding Scout_Name}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="90" Header="Cash Payment" Binding="{Binding Cash_Payment}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="90" Header="Check Payment" Binding="{Binding Check_Payment}" IsReadOnly="True"/>
+                                    <DataGridCheckBoxColumn Width="70" Header="Delete Row" Binding="{Binding Delete_Row}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </WrapPanel>
+                        <DockPanel>
+                            <Label Content="Total Paid:"/>
+                            <Label Name="totalPaidLabel" Width="100"/>
+                            <Label Content="Total Due:"/>
+                            <Label Name="totalDueLabel" Width="100"/>
+                            <Button Name="deletePaymentsButton" Content="Delete Selected Rows" HorizontalAlignment="Right" Click="deletePaymentsButton_Click"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <Button Name="saveButton" Content="Save" Width="200" Padding="5" Margin="5" Click="saveButton_Click"/>
+            <Button Name="closeButton" Content="Save and Exit" Width="200" Padding="5" Margin="5" Click="closeButton_Click"/>
+            
+        </StackPanel>
+    </Grid>
+</Window>
