@@ -1,0 +1,17 @@
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\bin\Debug\BoyScoutWreathTracker.exe.config
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\bin\Debug\BoyScoutWreathTracker.exe
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\bin\Debug\BoyScoutWreathTracker.pdb
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker.csprojResolveAssemblyReference.cache
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\MainWindow.g.cs
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\App.g.cs
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker_MarkupCompile.cache
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker_MarkupCompile.lref
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\MainWindow.baml
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker.g.resources
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker.Properties.Resources.resources
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker.csproj.GenerateResource.cache
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker.csproj.CoreCompileInputs.cache
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker.exe
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\BoyScoutWreathTracker.pdb
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\ScoutSales.g.cs
+C:\Users\Jboardman\source\repos\BoyScoutWreathTracker\BoyScoutWreathTracker\obj\Debug\ScoutSales.baml
