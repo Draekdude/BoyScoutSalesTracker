@@ -16,10 +16,12 @@
                     </Style>
                 </WrapPanel.Resources>
                 <Label Content="Please Select Scout:"/>
-                <ComboBox x:Name="scoutCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="scoutCombo_SelectionChanged" />
+                <ComboBox x:Name="scoutCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="ScoutCombo_SelectionChanged" />
                 <Label Content="Entered Date:"/>
                 <DatePicker Name="enterDate"/>
-                <CheckBox Name="dateFilterCheckBox" Margin="5" Content="Filter on Entered Date" Click="dateFilterCheckBox_Click"/>
+                <CheckBox Name="dateFilterCheckBox" Margin="5" Content="Filter on Entered Date" Click="DateFilterCheckBox_Click"/>
+                <Button Name="exportScoutToExcelButton" Content="Export Scout's Data To Excel" Click="ExportScoutToExcelButton_Click"/>
+                <Button Name="exportToExcelButton" Content="Export All Data to Excel" Click="ExportToExcelButton_Click" />
             </WrapPanel>
             <WrapPanel>
                 <Border BorderThickness="2" BorderBrush="Aqua" >
@@ -32,14 +34,14 @@
                                 </Style>
                             </WrapPanel.Resources>
                             <Label Content="Wreath:"/>
-                            <ComboBox x:Name="wreathCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="wreathCombo_SelectionChanged" />
+                            <ComboBox x:Name="wreathCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="WreathCombo_SelectionChanged" />
                             <Label Content="Price:"/>
                             <Label Name="priceLabel" Content="" Width="50"/>
                             <Label Content="Quantity:"/>
                             <TextBox Name="wreathQuanityTextBox" Width="50"/>
                             <Label Content="Notes:"/>
                             <TextBox Name="notesTextBox" Width="200"/>
-                            <Button Name="addInventoryButton" Content="Add" Width="50" Margin="10,0,0,0" Click="addInventoryButton_Click"/>  
+                            <Button Name="addInventoryButton" Content="Add" Width="50" Margin="10,0,0,0" Click="AddInventoryButton_Click"/>  
                         </WrapPanel>
                         <WrapPanel>
                             <DataGrid Name="inventoryDataGrid" Height="200" AutoGenerateColumns="False">
@@ -58,7 +60,7 @@
                         <DockPanel>
                             <Label Content="Total Sales:"/>
                             <Label Name="totalSalesLabel"/>
-                            <Button Name="deleteInventoryButton" Content="Delete Selected Rows" HorizontalAlignment="Right" Click="deleteInventoryButton_Click"/>
+                            <Button Name="deleteInventoryButton" Content="Delete Selected Rows" HorizontalAlignment="Right" Click="DeleteInventoryButton_Click"/>
                         </DockPanel>
                     </StackPanel>
                 </Border>
@@ -75,7 +77,7 @@
                             <TextBox Name="cashPaymentBox" Width="50"/>
                             <Label Content="Check Payment:"/>
                             <TextBox Name="checkPaymentBox" Width="50"/>
-                            <Button Name="addPaymentsButton" Content="Add" Width="50" Margin="10,0,0,0" Click="addPaymentsButton_Click"/>
+                            <Button Name="addPaymentsButton" Content="Add" Width="50" Margin="10,0,0,0" Click="AddPaymentsButton_Click"/>
                         </WrapPanel>
                         <WrapPanel>
                             <DataGrid Name="paymentsDataGrid" Height="200" AutoGenerateColumns="False">
@@ -93,14 +95,14 @@
                             <Label Name="totalPaidLabel" Width="100"/>
                             <Label Content="Total Due:"/>
                             <Label Name="totalDueLabel" Width="100"/>
-                            <Button Name="deletePaymentsButton" Content="Delete Selected Rows" HorizontalAlignment="Right" Click="deletePaymentsButton_Click"/>
+                            <Button Name="deletePaymentsButton" Content="Delete Selected Rows" HorizontalAlignment="Right" Click="DeletePaymentsButton_Click"/>
                         </DockPanel>
                     </StackPanel>
                 </Border>
             </WrapPanel>
 
-            <Button Name="saveButton" Content="Save" Width="200" Padding="5" Margin="5" Click="saveButton_Click"/>
-            <Button Name="closeButton" Content="Save and Exit" Width="200" Padding="5" Margin="5" Click="closeButton_Click"/>
+            <Button Name="saveButton" Content="Save" Width="200" Padding="5" Margin="5" Click="SaveButton_Click"/>
+            <Button Name="closeButton" Content="Save and Exit" Width="200" Padding="5" Margin="5" Click="CloseButton_Click"/>
             
         </StackPanel>
     </Grid>

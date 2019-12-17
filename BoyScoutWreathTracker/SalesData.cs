@@ -5,13 +5,13 @@ namespace BoyScoutWreathTracker
 {
 
 
-    public partial class WreathData
+    public partial class SalesData
     {
     }
 }
 namespace BoyScoutWreathTracker {
     
     
-    public partial class WreathData {
+    public partial class SalesData {
     }
 }
