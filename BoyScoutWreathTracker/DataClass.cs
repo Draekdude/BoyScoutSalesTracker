@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace BoyScoutWreathTracker
 {
-    class Wreath
+    class Item
     {
         private string name;
-        private int size;
+        private string description;
         private decimal price;
 
-        public Wreath( string name, int size, decimal price)
+        public Item( string name, string description, decimal price)
         {
             Name = name;
-            Size = size;
+            Description = description;
             Price = price;
         }
         public string Name { get => name; set => name = value; }
-        public int Size { get => size; set => size = value; }
+        public string Description { get => description; set => description = value; }
         public decimal Price { get => price; set => price = value; }
     }
     class Scout
@@ -64,7 +64,7 @@ namespace BoyScoutWreathTracker
     class Inventory
     {
         private string scout_Name;
-        private string wreath_Name;
+        private string item_Name;
         private DateTime entered_Date;
         private decimal price;
         private int quantity;
@@ -77,11 +77,11 @@ namespace BoyScoutWreathTracker
             
         }
 
-        public Inventory(string scout_Name, string wreath_Name, DateTime entered_Date, decimal price, int quantity,
+        public Inventory(string scout_Name, string item_Name, DateTime entered_Date, decimal price, int quantity,
             string notes)
         {
             Scout_Name = scout_Name;
-            Wreath_Name = wreath_Name;
+            Item_Name = item_Name;
             Entered_Date = entered_Date;
             Price = price;
             Quantity = quantity;
@@ -91,7 +91,7 @@ namespace BoyScoutWreathTracker
         }
 
         public string Scout_Name { get => scout_Name; set => scout_Name = value; }
-        public string Wreath_Name { get => wreath_Name; set => wreath_Name = value; }
+        public string Item_Name { get => item_Name; set => item_Name = value; }
         public DateTime Entered_Date { get => entered_Date; set => entered_Date = value; }
         public decimal Price { get => price; set => price = value; }
         public int Quantity { get => quantity; set => quantity = value; }

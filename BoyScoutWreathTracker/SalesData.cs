@@ -1,6 +1,14 @@
 ﻿namespace BoyScoutWreathTracker
 {
 }
+
+namespace BoyScoutWreathTracker
+{
+}
+
+namespace BoyScoutWreathTracker
+{
+}
 namespace BoyScoutWreathTracker
 {
 

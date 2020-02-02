@@ -8,7 +8,7 @@
         Title="MainWindow" Height="500" Width="1500">
     <Grid>
         <StackPanel Margin="0,0,0,-273">
-            <Label Content="Troop 67 Wreath Transaction Window" FontSize="20"/>
+            <Label Content="Troop Sales Transaction Window" FontSize="20"/>
             <WrapPanel Margin="0,10,10,10">
                 <WrapPanel.Resources>
                     <Style TargetType="Label">
@@ -20,25 +20,25 @@
                 <Label Content="Entered Date:"/>
                 <DatePicker Name="enterDate"/>
                 <CheckBox Name="dateFilterCheckBox" Margin="5" Content="Filter on Entered Date" Click="DateFilterCheckBox_Click"/>
-                <Button Name="exportScoutToExcelButton" Content="Export Scout's Data To Excel" Click="ExportScoutToExcelButton_Click"/>
+                <Button Name="exportScoutToExcelButton" Content="Export Scout's Data To Excel" Margin="0,0,5,0" Click="ExportScoutToExcelButton_Click"/>
                 <Button Name="exportToExcelButton" Content="Export All Data to Excel" Click="ExportToExcelButton_Click" />
             </WrapPanel>
             <WrapPanel>
                 <Border BorderThickness="2" BorderBrush="Aqua" >
                     <StackPanel Margin="10,10,10,10">
-                        <Label Content="Add Wreaths To Scout's Account" FontSize="16" HorizontalAlignment="Center" />
+                        <Label Content="Add Items To Scout's Account" FontSize="16" HorizontalAlignment="Center" />
                         <WrapPanel>
                             <WrapPanel.Resources>
                                 <Style TargetType="Label">
                                     <Setter Property="Margin" Value="5,0,0,0" />
                                 </Style>
                             </WrapPanel.Resources>
-                            <Label Content="Wreath:"/>
-                            <ComboBox x:Name="wreathCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="WreathCombo_SelectionChanged" />
+                            <Label Content="Item:"/>
+                            <ComboBox x:Name="itemCombo" DisplayMemberPath="Name" SelectedValuePath="Name" Height="20" Width="200" SelectionChanged="ItemCombo_SelectionChanged" />
                             <Label Content="Price:"/>
                             <Label Name="priceLabel" Content="" Width="50"/>
                             <Label Content="Quantity:"/>
-                            <TextBox Name="wreathQuanityTextBox" Width="50"/>
+                            <TextBox Name="itemQuanityTextBox" Width="50"/>
                             <Label Content="Notes:"/>
                             <TextBox Name="notesTextBox" Width="200"/>
                             <Button Name="addInventoryButton" Content="Add" Width="50" Margin="10,0,0,0" Click="AddInventoryButton_Click"/>  
@@ -47,8 +47,8 @@
                             <DataGrid Name="inventoryDataGrid" Height="200" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn SortMemberPath="Entered_Date" SortDirection="Ascending" Width="100" Header="Entered Date" Binding="{Binding Entered_Date, StringFormat=\{0:MM/dd/yyyy\}}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Width="150" Header="Scout_Name" Binding ="{Binding Scout_Name}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Width="150" Header="Wreath Name" Binding="{Binding Wreath_Name}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="150" Header="Scout Name" Binding ="{Binding Scout_Name}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="150" Header="Item Name" Binding="{Binding Item_Name}" IsReadOnly="True"/>
                                     <DataGridTextColumn Width="50" Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
                                     <DataGridTextColumn Width="50" Header="Qty" Binding="{Binding Quantity}" IsReadOnly="True"/>
                                     <DataGridTextColumn Width="70" Header="Total Price" Binding="{Binding Total_Price}" IsReadOnly="True"/>
@@ -77,13 +77,13 @@
                             <TextBox Name="cashPaymentBox" Width="50"/>
                             <Label Content="Check Payment:"/>
                             <TextBox Name="checkPaymentBox" Width="50"/>
-                            <Button Name="addPaymentsButton" Content="Add" Width="50" Margin="10,0,0,0" Click="AddPaymentsButton_Click"/>
+                            <Button Name="addPaymentButton" Content="Add" Width="50" Margin="10,0,0,0" Click="AddPaymentButton_Click"/>
                         </WrapPanel>
                         <WrapPanel>
-                            <DataGrid Name="paymentsDataGrid" Height="200" AutoGenerateColumns="False">
+                            <DataGrid Name="paymentDataGrid" Height="200" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn SortMemberPath="Entered_Date" SortDirection="Ascending" Width="100" Header="Entered Date" Binding="{Binding Entered_Date, StringFormat=\{0:MM/dd/yyyy\}}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Width="150" Header="Scout_Name" Binding ="{Binding Scout_Name}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="150" Header="Scout Name" Binding ="{Binding Scout_Name}" IsReadOnly="True"/>
                                     <DataGridTextColumn Width="90" Header="Cash Payment" Binding="{Binding Cash_Payment}" IsReadOnly="True"/>
                                     <DataGridTextColumn Width="90" Header="Check Payment" Binding="{Binding Check_Payment}" IsReadOnly="True"/>
                                     <DataGridCheckBoxColumn Width="70" Header="Delete Row" Binding="{Binding Delete_Row}"/>

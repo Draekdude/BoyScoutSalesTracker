@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static BoyScoutWreathTracker.SalesData;
 
 namespace BoyScoutWreathTracker
 {
@@ -24,141 +25,173 @@ namespace BoyScoutWreathTracker
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string wreathPath = "C:\\Boy Scouts\\wreath.xml";
-        const string scoutPath = "C:\\Boy Scouts\\scout.xml";
-        const string inventoryPath = "C:\\Boy Scouts\\inventory.xml";
-        const string paymentsPath = "C:\\Boy Scouts\\payments.xml";
+        const string MainDirectory = @"C:\Boy Scouts\";
+        const string ItemPath = MainDirectory + "item.xml";
+        const string ScoutPath = MainDirectory + "scout.xml";
+        const string InventoryPath = MainDirectory + "inventory.xml";
+        const string PaymentPath = MainDirectory + "payment.xml";
+
+        private ItemDataTable dtItem = new ItemDataTable();
+        private ScoutDataTable dtScout = new ScoutDataTable();
+        private InventoryDataTable dtInventory = new InventoryDataTable();
+        private PaymentDataTable dtPayment = new PaymentDataTable();
 
         private static readonly Regex _regexInteger = new Regex("[^0-9]+"); //regex that matches disallowed text
         private static readonly Regex _regexDecimal = new Regex("[^0-9.]+"); //regex that matches disallowed text
 
-        SalesData wreathData = new SalesData();
         public MainWindow()
         {
             InitializeComponent();
-
-            LoadXMLFiles(wreathData);
-
-            CreateScouts(wreathData);
-            CreateWreaths(wreathData);
+            LoadXMLFiles();
 
             enterDate.Text = DateTime.Now.ToShortDateString();
 
-            scoutCombo.ItemsSource = wreathData.Scout.DefaultView;
+            scoutCombo.ItemsSource = dtScout;
             scoutCombo.SelectedIndex = 0;
-            wreathCombo.ItemsSource = wreathData.Wreath.DefaultView;
+            itemCombo.ItemsSource = dtItem;
 
-            inventoryDataGrid.ItemsSource = wreathData.Inventory;
-            paymentsDataGrid.ItemsSource = wreathData.Payments;
+            inventoryDataGrid.ItemsSource = dtInventory;
+            paymentDataGrid.ItemsSource = dtPayment;
 
             UpdateAllForFilters();
         }
 
-        private void LoadXMLFiles(SalesData wreathData)
+        private void LoadXMLFiles()
         {
-            //wreathData.Wreath.ReadXml(wreathPath);
-            //wreathData.Scout.ReadXml(scoutPath);
-            wreathData.Inventory.ReadXml(inventoryPath);
-            wreathData.Payments.ReadXml(paymentsPath);
+            LoadItems();
+            LoadScouts();
+            LoadInventory();
+            LoadPayments();
         }
 
-        private void SaveXMLFiles(SalesData wreathData)
+        private void LoadItems()
         {
-            wreathData.Wreath.WriteXml(wreathPath);
-            wreathData.Scout.WriteXml(scoutPath);
-            wreathData.Inventory.WriteXml(inventoryPath);
-            wreathData.Payments.WriteXml(paymentsPath);
+            if (File.Exists(ItemPath))
+            {
+                dtItem.ReadXml(ItemPath);
+            }
+            else
+            {
+                CreateDirectory(MainDirectory);
+                CreateItems();
+                dtItem.WriteXml(ItemPath);
+            }
         }
 
-        private void CreateScouts(SalesData wreathData)
+        private void LoadScouts()
+        {
+            if (File.Exists(ScoutPath))
+            {
+                dtScout.ReadXml(ScoutPath);
+            }
+            else
+            {
+                CreateDirectory(MainDirectory);
+                CreateScouts();
+                dtScout.WriteXml(ScoutPath);
+            }
+        }
+
+        private void LoadInventory()
+        {
+            if (File.Exists(InventoryPath))
+            {
+                dtInventory.ReadXml(InventoryPath);
+            }
+            else
+            {
+                CreateDirectory(MainDirectory);
+                dtInventory.WriteXml(InventoryPath);
+                dtInventory.ReadXml(InventoryPath);
+            }
+        }
+
+        private void LoadPayments()
+        {
+            if (File.Exists(PaymentPath))
+            {
+                dtPayment.ReadXml(PaymentPath);
+            }
+            else
+            {
+                CreateDirectory(MainDirectory);
+                dtPayment.WriteXml(PaymentPath);
+                dtPayment.ReadXml(PaymentPath);
+            }
+        }
+
+        private void SaveXMLFiles()
+        {
+            dtItem.WriteXml(ItemPath);
+            dtScout.WriteXml(ScoutPath);
+            dtInventory.WriteXml(InventoryPath);
+            dtPayment.WriteXml(PaymentPath);
+        }
+
+        private void CreateDirectory(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
+
+        private void CreateScouts()
         {
             List<Scout> scoutList = new List<Scout>
             {
-                new Scout("Harrison Boardman"),
-                new Scout("Harrison Andropolis"),
-                new Scout("Nathan Todzy"),
-                new Scout("Ross Erstad"),
-                new Scout("Max "),
-                new Scout("Nicholas "),
-                new Scout("Matthew "),
-                new Scout("Ernie "),
-                new Scout("Mason "),
-                new Scout("Ryan Gofford"),
-                new Scout("Nico "),
-                new Scout("Elijha "),
-                new Scout("Jaden "),
-                new Scout("Pat McCormic"),
-                new Scout("Johnathan"),
-                new Scout("Alex"),
-                new Scout("David"),
-                new Scout("Cole")
+                new Scout("ScoutName")
             };
 
-            ScoutFillRows(wreathData, scoutList);
+            ScoutFillRows(scoutList);
         }
 
-        private void CreateWreaths(SalesData wreathData)
+        private void CreateItems()
         {
-            List<Wreath> wreathList = new List<Wreath>
+            List<Item> itemList = new List<Item>
             {
-                new Wreath("24 Inch Wreath", 24, 20.00m),
-                new Wreath("30 Inch Wreath", 30, 25.00m),
-                new Wreath("36 Inch Wreath", 36, 32.00m),
-                new Wreath("48 Inch Wreath", 48, 50.00m),
-                new Wreath("60 Inch Wreath", 60, 60.00m),
-                new Wreath("72 Inch Wreath", 72, 75.00m),
-                new Wreath("26 Inch Door Swag", 26, 20.00m),
-                new Wreath("30 Inch Candy Cane", 30, 25.00m),
-                new Wreath("40 Inch Star", 40, 50.00m),
-                new Wreath("26 Inch Cross", 26, 20.00m),
-                new Wreath("27 Inch Easle (for Cross)", 27, 5.00m),
-                new Wreath("30 Inch Tree", 30, 32.00m),
-                new Wreath("25 Feet Roping", 25, 30.00m),
-                new Wreath("50 Feet Roping", 50, 60.00m),
-                new Wreath("100 Feet Roping", 100, 110.00m)
+                new Item("Item Name", "Description", 20.00m)
             };
 
-            //List<Wreath> sortedWreathList = wreathList.Sort();
-            //wreathFillRows(wreathData, sortedWreathList);  
-            WreathFillRows(wreathData, wreathList);
+            ItemFillRows(itemList);
         }
 
-        private void ScoutFillRows(SalesData wreathData, List<Scout> scoutList)
+        private void ScoutFillRows(List<Scout> scoutList)
         {
             foreach (var scout in scoutList)
             {
-                SalesData.ScoutRow newScoutRow = wreathData.Scout.NewScoutRow();
+                ScoutRow newScoutRow = dtScout.NewScoutRow();
                 newScoutRow.Name = scout.Name;
-                wreathData.Scout.Rows.Add(newScoutRow);
+                dtScout.Rows.Add(newScoutRow);
             }
         }
 
-        private void WreathFillRows(SalesData wreathData, List<Wreath> wreathList)
+        private void ItemFillRows(List<Item> itemList)
         {
-            foreach (var wreath in wreathList)
+            foreach (var item in itemList)
             {
-                SalesData.WreathRow newWreathRow = wreathData.Wreath.NewWreathRow();
-                newWreathRow.Name = wreath.Name;
-                newWreathRow.Price = wreath.Price;
-                newWreathRow.Size = wreath.Size;
-                wreathData.Wreath.Rows.Add(newWreathRow);
+                ItemRow newItemRow = dtItem.NewItemRow();
+                newItemRow.Name = item.Name;
+                newItemRow.Price = item.Price;
+                newItemRow.Description = item.Description;
+                dtItem.Rows.Add(newItemRow);
             }
         }
 
-        private void WreathCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ItemCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            priceLabel.Content = FindPriceFromWreathTable(wreathCombo.SelectedValue.ToString());
+            priceLabel.Content = FindPriceFromItemTable(itemCombo.SelectedValue.ToString());
         }
 
-        private decimal FindPriceFromWreathTable(string wreath_Name)
+        private decimal FindPriceFromItemTable(string item_Name)
         {
             decimal price = 0m;
-            DataTable wreathDataTable = wreathData.Wreath;
+            DataTable itemDataTable = dtItem;
 
-            if (wreath_Name != "")
+            if (item_Name != "")
             {
-                var results = from myRow in wreathDataTable.AsEnumerable()
-                              where myRow.Field<string>("Name") == wreath_Name
+                var results = from myRow in itemDataTable.AsEnumerable()
+                              where myRow.Field<string>("Name") == item_Name
                               select myRow.Field<decimal>("Price");
                 price = results.First();
             }
@@ -173,7 +206,6 @@ namespace BoyScoutWreathTracker
             {
                 Inventory inventory = ReadInventoryDataFromForm();
                 AddInventoryItem(inventory);
-                //filterInventoryDataGrid(dateFilterCheckBox.IsChecked.Value);
                 UpdateAllForFilters();
                 ClearInventoryObjects();
             }
@@ -183,13 +215,13 @@ namespace BoyScoutWreathTracker
             }
         }
 
-        private void AddPaymentsButton_Click(object sender, RoutedEventArgs e)
+        private void AddPaymentButton_Click(object sender, RoutedEventArgs e)
         {
             string errorMessage = IsDataValidForPayments();
             if (errorMessage is null)
             {
                 Payments payments = ReadPaymentsDataFromForm();
-                AddPaymentsItem(payments);
+                AddPaymentItem(payments);
                 FilterPaymentsDataGrid(dateFilterCheckBox.IsChecked.Value);
                 totalPaidLabel.Content = FindTotalPaid();
                 totalDueLabel.Content = FindTotalDue();
@@ -202,9 +234,9 @@ namespace BoyScoutWreathTracker
 
         private void ClearInventoryObjects()
         {
-            wreathCombo.SelectedValue = "";
+            itemCombo.SelectedValue = "";
             priceLabel.Content = "";
-            wreathQuanityTextBox.Text = "";
+            itemQuanityTextBox.Text = "";
             notesTextBox.Text = "";
         }
 
@@ -216,10 +248,10 @@ namespace BoyScoutWreathTracker
         private void AddInventoryItem(Inventory inventory)
         {
 
-            SalesData.InventoryRow newInventoryRow = wreathData.Inventory.NewInventoryRow();
+            InventoryRow newInventoryRow = dtInventory.NewInventoryRow();
             newInventoryRow.Entered_Date = inventory.Entered_Date;
             newInventoryRow.Scout_Name = inventory.Scout_Name;
-            newInventoryRow.Wreath_Name = inventory.Wreath_Name;
+            newInventoryRow.Item_Name = inventory.Item_Name;
             newInventoryRow.Price = inventory.Price;
             newInventoryRow.Quantity = inventory.Quantity;
             newInventoryRow.Total_Price = inventory.Total_Price;
@@ -227,7 +259,7 @@ namespace BoyScoutWreathTracker
             newInventoryRow.Delete_Row = inventory.Delete_Row;
             try
             {
-                wreathData.Inventory.AddInventoryRow(newInventoryRow);
+                dtInventory.AddInventoryRow(newInventoryRow);
             }
             catch(Exception ex)
             {
@@ -235,17 +267,17 @@ namespace BoyScoutWreathTracker
             }
         }
 
-        private void AddPaymentsItem(Payments payments)
+        private void AddPaymentItem(Payments payments)
         {
-            SalesData.PaymentsRow newPaymentsRow = wreathData.Payments.NewPaymentsRow();
-            newPaymentsRow.Scout_Name = payments.Scout_Name;
-            newPaymentsRow.Cash_Payment = payments.Cash_Payment;
-            newPaymentsRow.Check_Payment = payments.Check_Payment;
-            newPaymentsRow.Entered_Date = payments.Entered_Date;
-            newPaymentsRow.Delete_Row = payments.Delete_Row;
+            PaymentRow newPaymentRow = dtPayment.NewPaymentRow();
+            newPaymentRow.Scout_Name = payments.Scout_Name;
+            newPaymentRow.Cash_Payment = payments.Cash_Payment;
+            newPaymentRow.Check_Payment = payments.Check_Payment;
+            newPaymentRow.Entered_Date = payments.Entered_Date;
+            newPaymentRow.Delete_Row = payments.Delete_Row;
             try
             {
-                wreathData.Payments.AddPaymentsRow(newPaymentsRow);
+                dtPayment.AddPaymentRow(newPaymentRow);
             }
             catch(Exception ex)
             {
@@ -257,7 +289,7 @@ namespace BoyScoutWreathTracker
         {
             DateTime entered_Date;
             string scout_Name;
-            string wreath_Name;
+            string item_Name;
             decimal price;
             int quantity;
             string notes;
@@ -266,9 +298,9 @@ namespace BoyScoutWreathTracker
             {
                 entered_Date = System.Convert.ToDateTime(enterDate.Text.ToString());
                 scout_Name = scoutCombo.SelectedValue.ToString();
-                wreath_Name = wreathCombo.SelectedValue.ToString();
-                price = FindPriceFromWreathTable(wreath_Name);
-                quantity = System.Convert.ToInt32(wreathQuanityTextBox.Text.ToString());
+                item_Name = itemCombo.SelectedValue.ToString();
+                price = FindPriceFromItemTable(item_Name);
+                quantity = System.Convert.ToInt32(itemQuanityTextBox.Text.ToString());
                 notes = notesTextBox.Text.ToString();
             }
             catch (Exception ex)
@@ -276,7 +308,7 @@ namespace BoyScoutWreathTracker
                 MessageBox.Show(ex.Message);
                 return null;
             }
-            Inventory inventory = new Inventory(scout_Name, wreath_Name, entered_Date, price, quantity,
+            Inventory inventory = new Inventory(scout_Name, item_Name, entered_Date, price, quantity,
             notes);
 
             return inventory;
@@ -305,9 +337,9 @@ namespace BoyScoutWreathTracker
         {
             if (scoutCombo.SelectedValue == null || scoutCombo.SelectedValue.ToString() == "")
                 return "Please Select Valid Scout Name.";
-            if (wreathCombo.SelectedValue == null || wreathCombo.SelectedValue.ToString() == "")
-                return "Please Select Valid Wreath.";
-            if (wreathQuanityTextBox.Text == null || wreathQuanityTextBox.Text =="" || _regexInteger.IsMatch(wreathQuanityTextBox.Text.ToString()))
+            if (itemCombo.SelectedValue == null || itemCombo.SelectedValue.ToString() == "")
+                return "Please Select Valid Item.";
+            if (itemQuanityTextBox.Text == null || itemQuanityTextBox.Text =="" || _regexInteger.IsMatch(itemQuanityTextBox.Text.ToString()))
                 return "Please Enter Valid Wreath Quantity.";
             if (enterDate.Text == null || enterDate.Text == "")
                 return "Please Enter Valid Enter Date.";
@@ -332,27 +364,31 @@ namespace BoyScoutWreathTracker
         private decimal FindTotalSales()
         {
             decimal totalDue = 0m;
-            foreach (SalesData.InventoryRow dataRowView in inventoryDataGrid.ItemsSource)
+            if (inventoryDataGrid.ItemsSource != null)
             {
-                string wreathName = dataRowView.Wreath_Name;
-                decimal price = FindPriceFromWreathTable(wreathName);
-                int quantity = dataRowView.Quantity;
-                totalDue = totalDue + price * quantity;
+                foreach (SalesData.InventoryRow dataRowView in inventoryDataGrid.ItemsSource)
+                {
+                    string itemName = dataRowView.Item_Name;
+                    decimal price = FindPriceFromItemTable(itemName);
+                    int quantity = dataRowView.Quantity;
+                    totalDue = totalDue + price * quantity;
+                }
             }
-
             return totalDue;
         }
 
         private decimal FindTotalPaid()
         {
             decimal totalPaid = 0m;
-            foreach (SalesData.PaymentsRow dataRowView in paymentsDataGrid.ItemsSource)
+            if (paymentDataGrid.ItemsSource != null)
             {
-                decimal cashPayment = dataRowView.Cash_Payment;
-                decimal checkPayment = dataRowView.Check_Payment;
-                totalPaid = totalPaid + cashPayment + checkPayment;
+                foreach (PaymentRow dataRowView in paymentDataGrid.ItemsSource)
+                {
+                    decimal cashPayment = dataRowView.Cash_Payment;
+                    decimal checkPayment = dataRowView.Check_Payment;
+                    totalPaid = totalPaid + cashPayment + checkPayment;
+                }
             }
-
             return totalPaid;
         }
 
@@ -370,14 +406,12 @@ namespace BoyScoutWreathTracker
                     return (totalSales - totalPaid).ToString();
                 }
             }
-            
-
             return null;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveXMLFiles(wreathData);
+            SaveXMLFiles();
         }
 
         private void ScoutCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -387,33 +421,33 @@ namespace BoyScoutWreathTracker
 
         private void FilterInventoryDataGrid(bool isDateFiltered)
         {
-            if (scoutCombo.SelectedValue.ToString() != "")
+            if (scoutCombo.SelectedValue != null && scoutCombo.SelectedValue.ToString() != "")
             {
                 string selectScout = "[Scout_Name] = '" + scoutCombo.SelectedValue.ToString() + "'";
                 if (isDateFiltered)
                 {
                     selectScout = selectScout + " and [Entered_Date] = '" + enterDate.Text.ToString() + "'";
                 }
-                inventoryDataGrid.ItemsSource = wreathData.Inventory.Select(selectScout);
+                inventoryDataGrid.ItemsSource = dtInventory.Select(selectScout);
             }
         }
 
         private void FilterPaymentsDataGrid(bool isDateFiltered)
         {
-            if (scoutCombo.SelectedValue.ToString() != "")
+            if (scoutCombo.SelectedValue != null && scoutCombo.SelectedValue.ToString() != "")
             {
                 string selectScout = "[Scout_Name] = '" + scoutCombo.SelectedValue.ToString() + "'";
                 if (isDateFiltered)
                 {
                     selectScout = selectScout + " and [Entered_Date] = '" + enterDate.Text.ToString() + "'";
                 }
-                paymentsDataGrid.ItemsSource = wreathData.Payments.Select(selectScout);
+                paymentDataGrid.ItemsSource = dtPayment.Select(selectScout);
             }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveXMLFiles(wreathData);
+            SaveXMLFiles();
             Close();
         }
 
@@ -469,7 +503,7 @@ namespace BoyScoutWreathTracker
             bool isDeleted = false;
             try
             {
-                foreach (SalesData.PaymentsRow dataRowView in paymentsDataGrid.ItemsSource)
+                foreach (PaymentRow dataRowView in paymentDataGrid.ItemsSource)
                 {
                     if (dataRowView.Delete_Row)
                     {
@@ -516,9 +550,9 @@ namespace BoyScoutWreathTracker
                 DirectoryInfo directoryInfo = System.IO.Directory.CreateDirectory("C:/Boy Scouts/");
                 XLWorkbook wb = new XLWorkbook();
 
-                DataTable inventoryDataTable = FilterDataTableByScoutName(wreathData.Inventory, scoutName);
+                DataTable inventoryDataTable = FilterDataTableByScoutName(dtInventory,scoutName);
                 wb.Worksheets.Add(inventoryDataTable, "Inventory");
-                DataTable paymentsDataTable = FilterDataTableByScoutName(wreathData.Payments, scoutName);
+                DataTable paymentsDataTable = FilterDataTableByScoutName(dtPayment,scoutName);
                 wb.Worksheets.Add(paymentsDataTable, "Payments");
                 fileName = directoryInfo.FullName + scoutName + "_" + dateTime + ".xlsx";
                 wb.SaveAs(fileName);
@@ -547,10 +581,10 @@ namespace BoyScoutWreathTracker
             DirectoryInfo directoryInfo = System.IO.Directory.CreateDirectory("C:/Boy Scouts/");
             XLWorkbook wb = new XLWorkbook();
 
-            DataTable inventoryDataTable = wreathData.Inventory;
+            DataTable inventoryDataTable = dtInventory;
             wb.Worksheets.Add(inventoryDataTable, "Inventory");
-            DataTable paymentsDataTable = wreathData.Payments;
-            wb.Worksheets.Add(paymentsDataTable, "Payments");
+            DataTable paymentsDataTable = dtPayment;
+            wb.Worksheets.Add(paymentsDataTable, "Payment");
             string fileName = directoryInfo.FullName + "_" + dateTime + ".xlsx";
             wb.SaveAs(fileName);
         }

@@ -20,17 +20,17 @@ namespace BoyScoutWreathTracker {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("WreathData")]
+    [global::System.Xml.Serialization.XmlRootAttribute("SalesData")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class SalesData : global::System.Data.DataSet {
         
-        private WreathDataTable tableWreath;
+        private ItemDataTable tableItem;
         
         private ScoutDataTable tableScout;
         
         private InventoryDataTable tableInventory;
         
-        private PaymentsDataTable tablePayments;
+        private PaymentDataTable tablePayment;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -60,8 +60,8 @@ namespace BoyScoutWreathTracker {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Wreath"] != null)) {
-                    base.Tables.Add(new WreathDataTable(ds.Tables["Wreath"]));
+                if ((ds.Tables["Item"] != null)) {
+                    base.Tables.Add(new ItemDataTable(ds.Tables["Item"]));
                 }
                 if ((ds.Tables["Scout"] != null)) {
                     base.Tables.Add(new ScoutDataTable(ds.Tables["Scout"]));
@@ -69,8 +69,8 @@ namespace BoyScoutWreathTracker {
                 if ((ds.Tables["Inventory"] != null)) {
                     base.Tables.Add(new InventoryDataTable(ds.Tables["Inventory"]));
                 }
-                if ((ds.Tables["Payments"] != null)) {
-                    base.Tables.Add(new PaymentsDataTable(ds.Tables["Payments"]));
+                if ((ds.Tables["Payment"] != null)) {
+                    base.Tables.Add(new PaymentDataTable(ds.Tables["Payment"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -94,9 +94,9 @@ namespace BoyScoutWreathTracker {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public WreathDataTable Wreath {
+        public ItemDataTable Item {
             get {
-                return this.tableWreath;
+                return this.tableItem;
             }
         }
         
@@ -124,9 +124,9 @@ namespace BoyScoutWreathTracker {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public PaymentsDataTable Payments {
+        public PaymentDataTable Payment {
             get {
-                return this.tablePayments;
+                return this.tablePayment;
             }
         }
         
@@ -197,8 +197,8 @@ namespace BoyScoutWreathTracker {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Wreath"] != null)) {
-                    base.Tables.Add(new WreathDataTable(ds.Tables["Wreath"]));
+                if ((ds.Tables["Item"] != null)) {
+                    base.Tables.Add(new ItemDataTable(ds.Tables["Item"]));
                 }
                 if ((ds.Tables["Scout"] != null)) {
                     base.Tables.Add(new ScoutDataTable(ds.Tables["Scout"]));
@@ -206,8 +206,8 @@ namespace BoyScoutWreathTracker {
                 if ((ds.Tables["Inventory"] != null)) {
                     base.Tables.Add(new InventoryDataTable(ds.Tables["Inventory"]));
                 }
-                if ((ds.Tables["Payments"] != null)) {
-                    base.Tables.Add(new PaymentsDataTable(ds.Tables["Payments"]));
+                if ((ds.Tables["Payment"] != null)) {
+                    base.Tables.Add(new PaymentDataTable(ds.Tables["Payment"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -242,10 +242,10 @@ namespace BoyScoutWreathTracker {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableWreath = ((WreathDataTable)(base.Tables["Wreath"]));
+            this.tableItem = ((ItemDataTable)(base.Tables["Item"]));
             if ((initTable == true)) {
-                if ((this.tableWreath != null)) {
-                    this.tableWreath.InitVars();
+                if ((this.tableItem != null)) {
+                    this.tableItem.InitVars();
                 }
             }
             this.tableScout = ((ScoutDataTable)(base.Tables["Scout"]));
@@ -260,10 +260,10 @@ namespace BoyScoutWreathTracker {
                     this.tableInventory.InitVars();
                 }
             }
-            this.tablePayments = ((PaymentsDataTable)(base.Tables["Payments"]));
+            this.tablePayment = ((PaymentDataTable)(base.Tables["Payment"]));
             if ((initTable == true)) {
-                if ((this.tablePayments != null)) {
-                    this.tablePayments.InitVars();
+                if ((this.tablePayment != null)) {
+                    this.tablePayment.InitVars();
                 }
             }
         }
@@ -271,24 +271,24 @@ namespace BoyScoutWreathTracker {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "WreathData";
+            this.DataSetName = "SalesData";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/WreathData.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableWreath = new WreathDataTable();
-            base.Tables.Add(this.tableWreath);
+            this.tableItem = new ItemDataTable();
+            base.Tables.Add(this.tableItem);
             this.tableScout = new ScoutDataTable();
             base.Tables.Add(this.tableScout);
             this.tableInventory = new InventoryDataTable();
             base.Tables.Add(this.tableInventory);
-            this.tablePayments = new PaymentsDataTable();
-            base.Tables.Add(this.tablePayments);
+            this.tablePayment = new PaymentDataTable();
+            base.Tables.Add(this.tablePayment);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeWreath() {
+        private bool ShouldSerializeItem() {
             return false;
         }
         
@@ -306,7 +306,7 @@ namespace BoyScoutWreathTracker {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializePayments() {
+        private bool ShouldSerializePayment() {
             return false;
         }
         
@@ -366,7 +366,7 @@ namespace BoyScoutWreathTracker {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void WreathRowChangeEventHandler(object sender, WreathRowChangeEvent e);
+        public delegate void ItemRowChangeEventHandler(object sender, ItemRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void ScoutRowChangeEventHandler(object sender, ScoutRowChangeEvent e);
@@ -375,25 +375,25 @@ namespace BoyScoutWreathTracker {
         public delegate void InventoryRowChangeEventHandler(object sender, InventoryRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void PaymentsRowChangeEventHandler(object sender, PaymentsRowChangeEvent e);
+        public delegate void PaymentRowChangeEventHandler(object sender, PaymentRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class WreathDataTable : global::System.Data.TypedTableBase<WreathRow> {
+        public partial class ItemDataTable : global::System.Data.TypedTableBase<ItemRow> {
             
             private global::System.Data.DataColumn columnName;
             
-            private global::System.Data.DataColumn columnSize;
+            private global::System.Data.DataColumn columnDescription;
             
             private global::System.Data.DataColumn columnPrice;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WreathDataTable() {
-                this.TableName = "Wreath";
+            public ItemDataTable() {
+                this.TableName = "Item";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -401,7 +401,7 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal WreathDataTable(global::System.Data.DataTable table) {
+            internal ItemDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -418,7 +418,7 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected WreathDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ItemDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -433,9 +433,9 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SizeColumn {
+            public global::System.Data.DataColumn DescriptionColumn {
                 get {
-                    return this.columnSize;
+                    return this.columnDescription;
                 }
             }
             
@@ -458,54 +458,54 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WreathRow this[int index] {
+            public ItemRow this[int index] {
                 get {
-                    return ((WreathRow)(this.Rows[index]));
+                    return ((ItemRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event WreathRowChangeEventHandler WreathRowChanging;
+            public event ItemRowChangeEventHandler ItemRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event WreathRowChangeEventHandler WreathRowChanged;
+            public event ItemRowChangeEventHandler ItemRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event WreathRowChangeEventHandler WreathRowDeleting;
+            public event ItemRowChangeEventHandler ItemRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event WreathRowChangeEventHandler WreathRowDeleted;
+            public event ItemRowChangeEventHandler ItemRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddWreathRow(WreathRow row) {
+            public void AddItemRow(ItemRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WreathRow AddWreathRow(string Name, int Size, decimal Price) {
-                WreathRow rowWreathRow = ((WreathRow)(this.NewRow()));
+            public ItemRow AddItemRow(string Name, string Description, decimal Price) {
+                ItemRow rowItemRow = ((ItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
-                        Size,
+                        Description,
                         Price};
-                rowWreathRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowWreathRow);
-                return rowWreathRow;
+                rowItemRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowItemRow);
+                return rowItemRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WreathRow FindByName(string Name) {
-                return ((WreathRow)(this.Rows.Find(new object[] {
+            public ItemRow FindByName(string Name) {
+                return ((ItemRow)(this.Rows.Find(new object[] {
                             Name})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                WreathDataTable cln = ((WreathDataTable)(base.Clone()));
+                ItemDataTable cln = ((ItemDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -513,14 +513,14 @@ namespace BoyScoutWreathTracker {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new WreathDataTable();
+                return new ItemDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnName = base.Columns["Name"];
-                this.columnSize = base.Columns["Size"];
+                this.columnDescription = base.Columns["Description"];
                 this.columnPrice = base.Columns["Price"];
             }
             
@@ -529,40 +529,47 @@ namespace BoyScoutWreathTracker {
             private void InitClass() {
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnSize = new global::System.Data.DataColumn("Size", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSize);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
                 this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnName}, true));
                 this.columnName.AllowDBNull = false;
                 this.columnName.Unique = true;
+                this.ExtendedProperties.Add("Generator_RowClassName", "ItemRow");
+                this.ExtendedProperties.Add("Generator_RowEvArgName", "ItemRowChangeEvent");
+                this.ExtendedProperties.Add("Generator_RowEvHandlerName", "ItemRowChangeEventHandler");
+                this.ExtendedProperties.Add("Generator_TableClassName", "ItemDataTable");
+                this.ExtendedProperties.Add("Generator_TablePropName", "Item");
+                this.ExtendedProperties.Add("Generator_TableVarName", "tableItem");
+                this.ExtendedProperties.Add("Generator_UserTableName", "Item");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WreathRow NewWreathRow() {
-                return ((WreathRow)(this.NewRow()));
+            public ItemRow NewItemRow() {
+                return ((ItemRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new WreathRow(builder);
+                return new ItemRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(WreathRow);
+                return typeof(ItemRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.WreathRowChanged != null)) {
-                    this.WreathRowChanged(this, new WreathRowChangeEvent(((WreathRow)(e.Row)), e.Action));
+                if ((this.ItemRowChanged != null)) {
+                    this.ItemRowChanged(this, new ItemRowChangeEvent(((ItemRow)(e.Row)), e.Action));
                 }
             }
             
@@ -570,8 +577,8 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.WreathRowChanging != null)) {
-                    this.WreathRowChanging(this, new WreathRowChangeEvent(((WreathRow)(e.Row)), e.Action));
+                if ((this.ItemRowChanging != null)) {
+                    this.ItemRowChanging(this, new ItemRowChangeEvent(((ItemRow)(e.Row)), e.Action));
                 }
             }
             
@@ -579,8 +586,8 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.WreathRowDeleted != null)) {
-                    this.WreathRowDeleted(this, new WreathRowChangeEvent(((WreathRow)(e.Row)), e.Action));
+                if ((this.ItemRowDeleted != null)) {
+                    this.ItemRowDeleted(this, new ItemRowChangeEvent(((ItemRow)(e.Row)), e.Action));
                 }
             }
             
@@ -588,14 +595,14 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.WreathRowDeleting != null)) {
-                    this.WreathRowDeleting(this, new WreathRowChangeEvent(((WreathRow)(e.Row)), e.Action));
+                if ((this.ItemRowDeleting != null)) {
+                    this.ItemRowDeleting(this, new ItemRowChangeEvent(((ItemRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveWreathRow(WreathRow row) {
+            public void RemoveItemRow(ItemRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -622,7 +629,7 @@ namespace BoyScoutWreathTracker {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "WreathDataTable";
+                attribute2.FixedValue = "ItemDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -930,7 +937,7 @@ namespace BoyScoutWreathTracker {
             
             private global::System.Data.DataColumn columnScout_Name;
             
-            private global::System.Data.DataColumn columnWreath_Name;
+            private global::System.Data.DataColumn columnItem_Name;
             
             private global::System.Data.DataColumn columnEntered_Date;
             
@@ -987,9 +994,9 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Wreath_NameColumn {
+            public global::System.Data.DataColumn Item_NameColumn {
                 get {
-                    return this.columnWreath_Name;
+                    return this.columnItem_Name;
                 }
             }
             
@@ -1078,11 +1085,11 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public InventoryRow AddInventoryRow(string Scout_Name, string Wreath_Name, System.DateTime Entered_Date, int Quantity, string Notes, decimal Price, decimal Total_Price, bool Delete_Row) {
+            public InventoryRow AddInventoryRow(string Scout_Name, string Item_Name, System.DateTime Entered_Date, int Quantity, string Notes, decimal Price, decimal Total_Price, bool Delete_Row) {
                 InventoryRow rowInventoryRow = ((InventoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Scout_Name,
-                        Wreath_Name,
+                        Item_Name,
                         Entered_Date,
                         Quantity,
                         Notes,
@@ -1096,11 +1103,11 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public InventoryRow FindByScout_NameEntered_DateWreath_Name(string Scout_Name, System.DateTime Entered_Date, string Wreath_Name) {
+            public InventoryRow FindByScout_NameEntered_DateItem_Name(string Scout_Name, System.DateTime Entered_Date, string Item_Name) {
                 return ((InventoryRow)(this.Rows.Find(new object[] {
                             Scout_Name,
                             Entered_Date,
-                            Wreath_Name})));
+                            Item_Name})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1121,7 +1128,7 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnScout_Name = base.Columns["Scout_Name"];
-                this.columnWreath_Name = base.Columns["Wreath_Name"];
+                this.columnItem_Name = base.Columns["Item_Name"];
                 this.columnEntered_Date = base.Columns["Entered_Date"];
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnNotes = base.Columns["Notes"];
@@ -1135,8 +1142,8 @@ namespace BoyScoutWreathTracker {
             private void InitClass() {
                 this.columnScout_Name = new global::System.Data.DataColumn("Scout_Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnScout_Name);
-                this.columnWreath_Name = new global::System.Data.DataColumn("Wreath_Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnWreath_Name);
+                this.columnItem_Name = new global::System.Data.DataColumn("Item_Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItem_Name);
                 this.columnEntered_Date = new global::System.Data.DataColumn("Entered_Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEntered_Date);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1152,9 +1159,9 @@ namespace BoyScoutWreathTracker {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnScout_Name,
                                 this.columnEntered_Date,
-                                this.columnWreath_Name}, true));
+                                this.columnItem_Name}, true));
                 this.columnScout_Name.AllowDBNull = false;
-                this.columnWreath_Name.AllowDBNull = false;
+                this.columnItem_Name.AllowDBNull = false;
                 this.columnEntered_Date.AllowDBNull = false;
             }
             
@@ -1287,7 +1294,7 @@ namespace BoyScoutWreathTracker {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class PaymentsDataTable : global::System.Data.TypedTableBase<PaymentsRow> {
+        public partial class PaymentDataTable : global::System.Data.TypedTableBase<PaymentRow> {
             
             private global::System.Data.DataColumn columnCash_Payment;
             
@@ -1301,8 +1308,8 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaymentsDataTable() {
-                this.TableName = "Payments";
+            public PaymentDataTable() {
+                this.TableName = "Payment";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1310,7 +1317,7 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal PaymentsDataTable(global::System.Data.DataTable table) {
+            internal PaymentDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1327,7 +1334,7 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected PaymentsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected PaymentDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1383,49 +1390,49 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaymentsRow this[int index] {
+            public PaymentRow this[int index] {
                 get {
-                    return ((PaymentsRow)(this.Rows[index]));
+                    return ((PaymentRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PaymentsRowChangeEventHandler PaymentsRowChanging;
+            public event PaymentRowChangeEventHandler PaymentRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PaymentsRowChangeEventHandler PaymentsRowChanged;
+            public event PaymentRowChangeEventHandler PaymentRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PaymentsRowChangeEventHandler PaymentsRowDeleting;
+            public event PaymentRowChangeEventHandler PaymentRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PaymentsRowChangeEventHandler PaymentsRowDeleted;
+            public event PaymentRowChangeEventHandler PaymentRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddPaymentsRow(PaymentsRow row) {
+            public void AddPaymentRow(PaymentRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaymentsRow AddPaymentsRow(decimal Cash_Payment, decimal Check_Payment, System.DateTime Entered_Date, string Scout_Name, bool Delete_Row) {
-                PaymentsRow rowPaymentsRow = ((PaymentsRow)(this.NewRow()));
+            public PaymentRow AddPaymentRow(decimal Cash_Payment, decimal Check_Payment, System.DateTime Entered_Date, string Scout_Name, bool Delete_Row) {
+                PaymentRow rowPaymentRow = ((PaymentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Cash_Payment,
                         Check_Payment,
                         Entered_Date,
                         Scout_Name,
                         Delete_Row};
-                rowPaymentsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowPaymentsRow);
-                return rowPaymentsRow;
+                rowPaymentRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPaymentRow);
+                return rowPaymentRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaymentsRow FindByEntered_DateScout_Name(System.DateTime Entered_Date, string Scout_Name) {
-                return ((PaymentsRow)(this.Rows.Find(new object[] {
+            public PaymentRow FindByEntered_DateScout_Name(System.DateTime Entered_Date, string Scout_Name) {
+                return ((PaymentRow)(this.Rows.Find(new object[] {
                             Entered_Date,
                             Scout_Name})));
             }
@@ -1433,7 +1440,7 @@ namespace BoyScoutWreathTracker {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                PaymentsDataTable cln = ((PaymentsDataTable)(base.Clone()));
+                PaymentDataTable cln = ((PaymentDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1441,7 +1448,7 @@ namespace BoyScoutWreathTracker {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new PaymentsDataTable();
+                return new PaymentDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1476,28 +1483,28 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaymentsRow NewPaymentsRow() {
-                return ((PaymentsRow)(this.NewRow()));
+            public PaymentRow NewPaymentRow() {
+                return ((PaymentRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new PaymentsRow(builder);
+                return new PaymentRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(PaymentsRow);
+                return typeof(PaymentRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.PaymentsRowChanged != null)) {
-                    this.PaymentsRowChanged(this, new PaymentsRowChangeEvent(((PaymentsRow)(e.Row)), e.Action));
+                if ((this.PaymentRowChanged != null)) {
+                    this.PaymentRowChanged(this, new PaymentRowChangeEvent(((PaymentRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1505,8 +1512,8 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.PaymentsRowChanging != null)) {
-                    this.PaymentsRowChanging(this, new PaymentsRowChangeEvent(((PaymentsRow)(e.Row)), e.Action));
+                if ((this.PaymentRowChanging != null)) {
+                    this.PaymentRowChanging(this, new PaymentRowChangeEvent(((PaymentRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1514,8 +1521,8 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.PaymentsRowDeleted != null)) {
-                    this.PaymentsRowDeleted(this, new PaymentsRowChangeEvent(((PaymentsRow)(e.Row)), e.Action));
+                if ((this.PaymentRowDeleted != null)) {
+                    this.PaymentRowDeleted(this, new PaymentRowChangeEvent(((PaymentRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1523,14 +1530,14 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.PaymentsRowDeleting != null)) {
-                    this.PaymentsRowDeleting(this, new PaymentsRowChangeEvent(((PaymentsRow)(e.Row)), e.Action));
+                if ((this.PaymentRowDeleting != null)) {
+                    this.PaymentRowDeleting(this, new PaymentRowChangeEvent(((PaymentRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemovePaymentsRow(PaymentsRow row) {
+            public void RemovePaymentRow(PaymentRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1557,7 +1564,7 @@ namespace BoyScoutWreathTracker {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "PaymentsDataTable";
+                attribute2.FixedValue = "PaymentDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1601,41 +1608,41 @@ namespace BoyScoutWreathTracker {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class WreathRow : global::System.Data.DataRow {
+        public partial class ItemRow : global::System.Data.DataRow {
             
-            private WreathDataTable tableWreath;
+            private ItemDataTable tableItem;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal WreathRow(global::System.Data.DataRowBuilder rb) : 
+            internal ItemRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableWreath = ((WreathDataTable)(this.Table));
+                this.tableItem = ((ItemDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableWreath.NameColumn]));
+                    return ((string)(this[this.tableItem.NameColumn]));
                 }
                 set {
-                    this[this.tableWreath.NameColumn] = value;
+                    this[this.tableItem.NameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Size {
+            public string Description {
                 get {
                     try {
-                        return ((int)(this[this.tableWreath.SizeColumn]));
+                        return ((string)(this[this.tableItem.DescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Size\' in table \'Wreath\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'Item\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWreath.SizeColumn] = value;
+                    this[this.tableItem.DescriptionColumn] = value;
                 }
             }
             
@@ -1644,39 +1651,39 @@ namespace BoyScoutWreathTracker {
             public decimal Price {
                 get {
                     try {
-                        return ((decimal)(this[this.tableWreath.PriceColumn]));
+                        return ((decimal)(this[this.tableItem.PriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'Wreath\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'Item\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableWreath.PriceColumn] = value;
+                    this[this.tableItem.PriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSizeNull() {
-                return this.IsNull(this.tableWreath.SizeColumn);
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableItem.DescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSizeNull() {
-                this[this.tableWreath.SizeColumn] = global::System.Convert.DBNull;
+            public void SetDescriptionNull() {
+                this[this.tableItem.DescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPriceNull() {
-                return this.IsNull(this.tableWreath.PriceColumn);
+                return this.IsNull(this.tableItem.PriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetPriceNull() {
-                this[this.tableWreath.PriceColumn] = global::System.Convert.DBNull;
+                this[this.tableItem.PriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1733,12 +1740,12 @@ namespace BoyScoutWreathTracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Wreath_Name {
+            public string Item_Name {
                 get {
-                    return ((string)(this[this.tableInventory.Wreath_NameColumn]));
+                    return ((string)(this[this.tableInventory.Item_NameColumn]));
                 }
                 set {
-                    this[this.tableInventory.Wreath_NameColumn] = value;
+                    this[this.tableInventory.Item_NameColumn] = value;
                 }
             }
             
@@ -1897,15 +1904,15 @@ namespace BoyScoutWreathTracker {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class PaymentsRow : global::System.Data.DataRow {
+        public partial class PaymentRow : global::System.Data.DataRow {
             
-            private PaymentsDataTable tablePayments;
+            private PaymentDataTable tablePayment;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal PaymentsRow(global::System.Data.DataRowBuilder rb) : 
+            internal PaymentRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablePayments = ((PaymentsDataTable)(this.Table));
+                this.tablePayment = ((PaymentDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1913,14 +1920,14 @@ namespace BoyScoutWreathTracker {
             public decimal Cash_Payment {
                 get {
                     try {
-                        return ((decimal)(this[this.tablePayments.Cash_PaymentColumn]));
+                        return ((decimal)(this[this.tablePayment.Cash_PaymentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Cash_Payment\' in table \'Payments\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cash_Payment\' in table \'Payment\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePayments.Cash_PaymentColumn] = value;
+                    this[this.tablePayment.Cash_PaymentColumn] = value;
                 }
             }
             
@@ -1929,14 +1936,14 @@ namespace BoyScoutWreathTracker {
             public decimal Check_Payment {
                 get {
                     try {
-                        return ((decimal)(this[this.tablePayments.Check_PaymentColumn]));
+                        return ((decimal)(this[this.tablePayment.Check_PaymentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Check_Payment\' in table \'Payments\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Check_Payment\' in table \'Payment\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePayments.Check_PaymentColumn] = value;
+                    this[this.tablePayment.Check_PaymentColumn] = value;
                 }
             }
             
@@ -1944,10 +1951,10 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime Entered_Date {
                 get {
-                    return ((global::System.DateTime)(this[this.tablePayments.Entered_DateColumn]));
+                    return ((global::System.DateTime)(this[this.tablePayment.Entered_DateColumn]));
                 }
                 set {
-                    this[this.tablePayments.Entered_DateColumn] = value;
+                    this[this.tablePayment.Entered_DateColumn] = value;
                 }
             }
             
@@ -1955,10 +1962,10 @@ namespace BoyScoutWreathTracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Scout_Name {
                 get {
-                    return ((string)(this[this.tablePayments.Scout_NameColumn]));
+                    return ((string)(this[this.tablePayment.Scout_NameColumn]));
                 }
                 set {
-                    this[this.tablePayments.Scout_NameColumn] = value;
+                    this[this.tablePayment.Scout_NameColumn] = value;
                 }
             }
             
@@ -1967,51 +1974,51 @@ namespace BoyScoutWreathTracker {
             public bool Delete_Row {
                 get {
                     try {
-                        return ((bool)(this[this.tablePayments.Delete_RowColumn]));
+                        return ((bool)(this[this.tablePayment.Delete_RowColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Delete_Row\' in table \'Payments\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Delete_Row\' in table \'Payment\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePayments.Delete_RowColumn] = value;
+                    this[this.tablePayment.Delete_RowColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCash_PaymentNull() {
-                return this.IsNull(this.tablePayments.Cash_PaymentColumn);
+                return this.IsNull(this.tablePayment.Cash_PaymentColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCash_PaymentNull() {
-                this[this.tablePayments.Cash_PaymentColumn] = global::System.Convert.DBNull;
+                this[this.tablePayment.Cash_PaymentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCheck_PaymentNull() {
-                return this.IsNull(this.tablePayments.Check_PaymentColumn);
+                return this.IsNull(this.tablePayment.Check_PaymentColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCheck_PaymentNull() {
-                this[this.tablePayments.Check_PaymentColumn] = global::System.Convert.DBNull;
+                this[this.tablePayment.Check_PaymentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsDelete_RowNull() {
-                return this.IsNull(this.tablePayments.Delete_RowColumn);
+                return this.IsNull(this.tablePayment.Delete_RowColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetDelete_RowNull() {
-                this[this.tablePayments.Delete_RowColumn] = global::System.Convert.DBNull;
+                this[this.tablePayment.Delete_RowColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2019,22 +2026,22 @@ namespace BoyScoutWreathTracker {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class WreathRowChangeEvent : global::System.EventArgs {
+        public class ItemRowChangeEvent : global::System.EventArgs {
             
-            private WreathRow eventRow;
+            private ItemRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WreathRowChangeEvent(WreathRow row, global::System.Data.DataRowAction action) {
+            public ItemRowChangeEvent(ItemRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WreathRow Row {
+            public ItemRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2121,22 +2128,22 @@ namespace BoyScoutWreathTracker {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class PaymentsRowChangeEvent : global::System.EventArgs {
+        public class PaymentRowChangeEvent : global::System.EventArgs {
             
-            private PaymentsRow eventRow;
+            private PaymentRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaymentsRowChangeEvent(PaymentsRow row, global::System.Data.DataRowAction action) {
+            public PaymentRowChangeEvent(PaymentRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaymentsRow Row {
+            public PaymentRow Row {
                 get {
                     return this.eventRow;
                 }
